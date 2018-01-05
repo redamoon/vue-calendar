@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Link付き Vue.js Calendar</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+<div id="app" v-cloak>
+  <table class="calendar">
+    <caption class="calendar__title">カレンダー</caption>
+    <thead>
+      <tr>
+        <td colspan="1"><a @click="moveLastMonth()">＜</a></td>
+        <td colspan="5">{{calData.year}}年{{getMonthName(calData.month)}}</td>
+        <td colspan="1"><a @click="moveNextMonth()">＞</a></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th v-for="week in weeks" v-bind:abbr="week + '曜日'">{{ week }}</th>
+      </tr>
+      <tr v-for="week in calendar">
+        <td v-for="day in week">
+          <template v-if="day.check"><a v-bind:href="day.url">{{ day.day }}</a></template>
+          <template v-else>{{ day.day }}</template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="js/vendar/vue.js"></script>
+<script src="js/calendar.js"></script>
+</body>
+</html>
