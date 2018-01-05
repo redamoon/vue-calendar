@@ -16,7 +16,7 @@ new Vue({
   methods: {
     getEntries: function() {
       // Axiosで取得
-      var entriesDataPath = '/data/entries_data.json';
+      var entriesDataPath = '/vue-calendar/example/data/entries_data.json';
       var self = this;
       axios.get(entriesDataPath)
         .then(function (response) {
