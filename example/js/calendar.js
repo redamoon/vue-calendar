@@ -1,7 +1,7 @@
 new Vue({
   el: '#app',
   data: {
-    weeks: ['日', '月', '火', '水', '木', '金', '土'],
+    weeks: ['月', '火', '水', '木', '金', '土', '日'],
     calData: {year: 0, month: 0},
     entriesData: [],
     entriesCount: '',
@@ -62,10 +62,11 @@ new Vue({
     calendar: function() {
       var self = this;
       var thisYearMonth = this.calData.year + '.' + this.toDoubleDigits(this.calData.month) + '.';
-      var firstDay = new Date(this.calData.year, this.calData.month - 1, 1).getDay();
+      var firstDay = new Date(this.calData.year, this.calData.month - 1, 1).getDay() - 1;
       var lastDate = new Date(this.calData.year, this.calData.month, 0).getDate();
       var dayIdx = 1;
       var calendar = [];
+      console.log(firstDay);
       for (var w = 0; w < 6; w++) {
         var week = [];
         if (lastDate < dayIdx) {break;}
