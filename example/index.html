@@ -11,9 +11,9 @@
     <caption class="calendar__title">カレンダー</caption>
     <thead>
       <tr>
-        <td colspan="1"><a @click="moveLastMonth()">＜</a></td>
+        <td colspan="1"><a @click="moveLastMonth()" tabindex="0">＜</a></td>
         <td colspan="5">{{calData.year}}年{{getMonthName(calData.month)}}</td>
-        <td colspan="1"><a @click="moveNextMonth()">＞</a></td>
+        <td colspan="1"><a @click="moveNextMonth()" tabindex="0">＞</a></td>
       </tr>
     </thead>
     <tbody>
