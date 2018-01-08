@@ -2,6 +2,7 @@ new Vue({
   el: '#app',
   data: {
     weeks: ['月', '火', '水', '木', '金', '土', '日'],
+    monthName: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
     calData: {year: 0, month: 0},
     entriesData: [],
     entriesCount: '',
@@ -31,8 +32,7 @@ new Vue({
         });
     },
     getMonthName: function(month) {
-      var monthName = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
-      return monthName[month - 1];
+      return this.monthName[month - 1];
     },
     moveLastMonth: function() {
       if (this.calData.month === 1) {
@@ -61,10 +61,11 @@ new Vue({
   computed: {
     calendar: function() {
       var self = this;
+      var thisCalDate;
+      var dayIdx = 1;
       var thisYearMonth = this.calData.year + '.' + this.toDoubleDigits(this.calData.month) + '.';
       var firstDay = new Date(this.calData.year, this.calData.month - 1, 0).getDay();
       var lastDate = new Date(this.calData.year, this.calData.month, 0).getDate();
-      var dayIdx = 1;
       var calendar = [];
       for (var w = 0; w < 6; w++) {
         var week = [];
@@ -79,12 +80,12 @@ new Vue({
             week[d] = {day: ''};
             dayIdx++;
           } else {
-            var thisCalDate = thisYearMonth + this.toDoubleDigits(dayIdx);
             week[d] = {
               day: dayIdx,
               check: '',
               url: ''
             };
+            thisCalDate = thisYearMonth + this.toDoubleDigits(dayIdx);
             for(var i = 0; i < this.entriesDatePublished.length; i++) {
               if(thisCalDate === this.entriesDatePublished[i]){
                 week[d].check = true;
