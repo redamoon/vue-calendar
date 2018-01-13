@@ -93,7 +93,7 @@ new Vue({
         for (var d = 0; d < 7; d++) {
           if (w === 0 && d < firstDay) {
             week[d] = {day: ''};
-          } else if (w === 6 && lastDate < day) {
+          } else if (w === 6 && lastDate < dayIdx) {
             week[d] = {day: ''};
             dayIdx++;
           } else if (lastDate < dayIdx) {

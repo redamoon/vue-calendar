@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Link付き Vue.js Calendar</title>
+<title>Link Vue.js Calendar</title>
 <link rel="stylesheet" type="text/css" href="/vue-calendar/example/css/main.css">
 </head>
 <body>
@@ -11,9 +11,9 @@
     <caption class="calendar__title">カレンダー</caption>
     <thead>
       <tr>
-        <td colspan="1"><template v-if="prevStatus"><a @click="moveLastMonth()" tabindex="0">＜</a></template></td>
+        <td colspan="1"><template v-if="prevStatus"><a href="#" @click.self.prevent="moveLastMonth()" tabindex="0">先月へ</a></template></td>
         <td colspan="5">{{calData.year}}年{{getMonthName(calData.month)}}</td>
-        <td colspan="1"><template v-if="nextStatus"><a @click="moveNextMonth()" tabindex="0">＞</a></template></td>
+        <td colspan="1"><template v-if="nextStatus"><a href="#" @click.self.prevent="moveNextMonth()" tabindex="0">次月へ</a></template></td>
       </tr>
     </thead>
     <tbody>
